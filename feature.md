@@ -4,8 +4,9 @@
     =>logout(token blacklisting)
     =>[otp based registration]
 
-==> POst
+==> Post
     => create
+    
     => can see the feed
     => save post
     => like post
