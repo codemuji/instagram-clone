@@ -30,3 +30,12 @@ export async function login(email, password) {
     throw err;
   }
 }
+
+export async function getMe() {
+  try {
+    const response = await api.get("/get-me");
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
