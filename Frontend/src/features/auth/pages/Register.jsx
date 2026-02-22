@@ -4,22 +4,53 @@ import axios from "axios";
 import { useState } from "react";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
+  async function handdleSubmit(e) {
+    e.preventDefault();
 
-
-
-
+    axios
+      .post("http://localhost:3000/api/auth/register", {
+        username,
+        email,
+        password,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  }
 
   return (
     <main>
       <div className="form-container">
         <h1>Register</h1>
-        <form>
-          <input type="text" name="username" placeholder="Enter username" />
-          <input type="email" name="email" placeholder="Enter Email" />
-          <input type="password" name="password" placeholder="Enter Password" />
+        <form onSubmit={handdleSubmit}>
+          <input
+            onInput={(e) => {
+              setUsername(e.target.value);
+            }}
+            type="text"
+            name="username"
+            placeholder="Enter username"
+          />
+          <input
+            onInput={(e) => {
+              setEmail(e.target.value);
+            }}
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+          />
+          <input
+            onInput={(e) => {
+              setPassword(e.target.value);
+            }}
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+          />
           <button>Register</button>
         </form>
         <p>
