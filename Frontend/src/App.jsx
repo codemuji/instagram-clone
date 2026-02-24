@@ -2,10 +2,13 @@ import { RouterProvider } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import "./style.scss";
 import { AuthProvider } from "./features/auth/auth.context.jsx";
+import { PostContextProvider } from "./features/post/post.context.jsx";
 function App() {
   return (
     <AuthProvider>
-      <AppRoutes />
+      <PostContextProvider>
+        <AppRoutes />
+      </PostContextProvider>
     </AuthProvider>
   );
 }

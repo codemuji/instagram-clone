@@ -75,7 +75,7 @@ async function loginController(req, res) {
         email: email,
       },
     ],
-  });
+  }).select("+password");
 
   if (!user) {
     res.status(404).json({
