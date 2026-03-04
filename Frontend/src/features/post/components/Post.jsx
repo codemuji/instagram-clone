@@ -1,27 +1,27 @@
 import React from "react";
+import { usePost } from "../hook/usePost";
 
-const Post = ({ user, post }) => {
+const Post = ({ user, post, loading, handleLike, handleUnLike }) => {
+  
+
   return (
     <div className="post">
       <div className="user">
         <div className="img-wrapper">
-          <img
-            src={user.profileImage}
-            alt=""
-          />
+          <img src={user.profileImage} alt="" />
         </div>
 
         <p>{user.username}</p>
       </div>
-      <img
-        src={post.imgUrl}
-        alt=""
-      />
+      <img src={post.imgUrl} alt="" />
       <div className="icons">
         <div className="left">
           <button>
             <svg
-              className={post.isLiked?"like":""}
+              className={post.isLiked ? "like" : ""}
+              onClick={() => {
+                post.isLiked ? handleUnLike(post._id) : handleLike(post._id);
+              }}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
